@@ -8,7 +8,7 @@ function App() {
   // }
   return (
     <>
-    <div className="loading"  ><div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
+{/*     <div className="loading"  ><div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div> */}
     <div className='big-cont'>
     <WeatherApp/>
     </div>
