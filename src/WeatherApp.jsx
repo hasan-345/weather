@@ -18,23 +18,13 @@ function WeatherApp() {
    
   };
   if(alldata !== null && loading){
-    document.title = alldata.name
+    document.title = alldata.location.name
    }
 
-   let image = Clear;
-  if(alldata != null){
-    if(alldata.weather[0].main === "Clouds") {
-       image = Clouds
-    }else if(alldata.weather[0].main === "Clear"){
-        image = Clear
-    }else if(alldata.weather[0].main === "Rain"){
-      image = rain
-    }else if(alldata.weather[0].main === "Drizzle"){
-     image = drizzle
-    }else{
-      image = Clouds
-    }
-  }
+  
+
+   
+  
  
   return (
     <div className='weather'>
@@ -43,30 +33,31 @@ function WeatherApp() {
         if(event.key === 'Enter'){
           sendData()
         }
-      }} onChange={(e) => setInput(e.target.value)} placeholder={alldata != null && loading === true? alldata.name: "__"} /> <img src={search} onClick={sendData} /> </div>
+      }} onChange={(e) => setInput(e.target.value)} placeholder={alldata != null && loading === true? alldata.location.name: "__"} /> <img src={search} onClick={sendData} /> </div>
      <div className="error">{error}</div> 
         
      
           <div className='height'>
             <div className="img">
-              <img src={image} alt="" />
+              <img src={alldata != null && loading? alldata.current.condition.icon: Clear} alt="" />
             </div>
             <div className="temp">
-              <h1>{alldata != null && loading === true?Number(Math.round(alldata.main.temp - 273)) : "__" }°C</h1>
+              <h1>{alldata != null && loading === true? alldata.current.temp_c: "__" }°C</h1>
             </div>
-            <h1>{alldata != null && loading === true?alldata.name: "__"}</h1>
+            <h1>{alldata != null && loading === true?alldata.location.name : "__"}</h1>
+            <div className="date"> {alldata != null && loading === true? alldata.location.localtime: ""}  </div>
             <div className="div">
               <div className="hum">
                 <img src={humidity} alt="" />
                 <div>
-                  <p>{alldata != null && loading === true?alldata.main.humidity: "__"}%</p>
+                  <p>{alldata != null && loading === true?alldata.current.humidity: "__"}%</p>
                   <p>Humidity</p>
                 </div>
               </div>
               <div className="hum">
                 <img src={wind} alt="" />
                 <div>
-                  <p>{alldata != null && loading === true?alldata.wind.speed: "__"} km/h</p>
+                  <p>{alldata != null && loading === true?alldata.current.wind_kph: "__"} km/h</p>
                   <p>Wind Speed</p>
                 </div>
               </div>
