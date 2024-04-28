@@ -45,6 +45,7 @@ function WeatherApp() {
               <h1>{alldata != null && loading === true? alldata.current.temp_c: "__" }°C</h1>
             </div>
             <h1>{alldata != null && loading === true?alldata.location.name : "__"}</h1>
+            <h1 className='country'> {alldata != null && loading === true?alldata.location.country : "__"}</h1>
             <div className="date"> {alldata != null && loading === true? alldata.location.localtime: ""}  </div>
             <div className="div">
               <div className="hum">
