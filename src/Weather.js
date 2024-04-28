@@ -12,7 +12,7 @@ function getWeather(city) {
 
     setError(null);
     fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api}&units=standard`
+      `https://api.weatherapi.com/v1/current.json?key=5ec5b58082e149c496094541242804&q=${city}&aqi=no`
     )
       .then((response) => {
         if (!response.ok) {
@@ -24,6 +24,7 @@ function getWeather(city) {
       .then((finalResponse) => {
         setData(finalResponse);
         setLoading(true);
+        console.log(finalResponse)
       })
       .catch((error) => {
         setError(error.message); // Set error message
